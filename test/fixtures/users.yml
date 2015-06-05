@@ -5,10 +5,8 @@
 # below each fixture, per the syntax in the comments below
 #
 test1:
-#  id: '1'
+  id: '1'
   email: 'test1@example.com'
-  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
-
-test2:
-  email: ''
-  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  created_at: <%= Time.now - 6.minutes %>
+  updated_at: <%= Time.now - 4.minutes %>

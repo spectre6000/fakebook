@@ -1,5 +1,6 @@
 require 'test_helper'
-include Devise::TestHelpers
+# include Devise::TestHelpers
+
 class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   def setup
@@ -7,31 +8,40 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
   end
 
   test "non-logged in users only see login page" do
-    assert warden.authenticated?(:test1) == false
     get root_path
     assert_response :redirect
     follow_redirect!
-    assert_template 'devise/sessions/new'
+    assert_select "title", "Log in"
     get users_path
     assert_response :redirect
     follow_redirect!
-    assert_template 'devise/sessions/new'
+    assert_select "title", "Log in"
     get user_path('1')
     assert_response :redirect
     follow_redirect!
-    assert_template 'devise/sessions/new'
+    assert_select "title", "Log in"
     get edit_user_path('1')
     assert_response :redirect
     follow_redirect!
-    assert_template 'devise/sessions/new'
-    # assert warden.authenticated?(@user) == false
+    assert_select "title", "Log in"
   end
 
-  # test "logged in users can see their pages" do 
-  #   sign_in @user
-  #   assert warden.authenticated?(:user) == true
-  #   get users_path
-  #   assert_template "/users/index"
-  # end
+  test "logged in users can see their pages" do
+    get root_path
+    assert_response :redirect
+    follow_redirect!
+    assert_select "title", "Log in"
+    post user_session_path, 'user[email]' => @user.email, 'user[password]' =>  'password'
+    follow_redirect!
+    assert_response :success
+    assert_select "title", "User Index"
+    get users_path
+    assert_response :success
+    assert_select "title", "User Index"
+    get user_path('1')
+    assert_response :success
+    assert_select "title", "#{@user.email}'s Console"
+   end
 
 end
+
