@@ -4,9 +4,5 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   resources :users, except: [:create, :new]
-
-  # devise_scope :user do
-  #   get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
   
 end
