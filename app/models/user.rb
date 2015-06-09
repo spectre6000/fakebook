@@ -6,7 +6,13 @@ class User < ActiveRecord::Base
   
   devise :omniauthable, :omniauth_providers => [:facebook]
 
-  # has_many :friends, foreign_key: "friend_id", dependent: :destroy
+  has_and_belongs_to_many :friends, 
+              class_name: "User", 
+              join_table: :friends, 
+              foreign_key: :friend_id, 
+              association_foreign_key: :friended_id
+
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

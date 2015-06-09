@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20150609155833) do
   end
 
   add_index "friends", ["friend_id", "friended_id"], name: "index_friends_on_friend_id_and_friended_id", unique: true, using: :btree
-  add_index "friends", ["friend_id"], name: "index_friends_on_friend_id", using: :btree
-  add_index "friends", ["friended_id"], name: "index_friends_on_friended_id", using: :btree
+  add_index "friends", ["friended_id", "friend_id"], name: "index_friends_on_friended_id_and_friend_id", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
