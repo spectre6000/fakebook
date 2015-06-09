@@ -1,0 +1,5 @@
+<% @pending.each do |invite| %>
+  <br /><%= invite.user.email %>
+  <%= link_to "Accept", {:controller => "friendships", :action => "edit", :id => invite.user_id} %>
+   <%= link_to "Reject", friendship_path(:id => invite.user_id), :method => :delete %>
+<% end %>

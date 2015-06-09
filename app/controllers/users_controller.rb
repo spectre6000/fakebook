@@ -14,4 +14,12 @@ class UsersController < ApplicationController
 
   end
 
+  def friend(user)
+    current_user.friendships.take(friend_id: user.id).accepted == true
+  end
+
+  def inverse_friend(user)
+    current_user.inverse_friendships.take(user_id: user.id).accepted == true
+  end
+
 end
