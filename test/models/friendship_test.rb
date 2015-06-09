@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class FriendTest < ActiveSupport::TestCase
+class FriendshipTest < ActiveSupport::TestCase
   
   def setup
-    @friendship = Friend.new(friending_id: 1, friended_id: 2)
+    @friendship = Friendship.new(user_id: 1, friend_id: 2)
   end
 
   test "friend entity should be valid" do
@@ -11,12 +11,12 @@ class FriendTest < ActiveSupport::TestCase
   end
 
   test "should require a friend_id" do 
-    @friendship.friending_id = nil
+    @friendship.user_id = nil
     assert_not @friendship.valid?
   end
 
   test "should require a friended_id" do
-    @friendship.friended_id = nil
+    @friendship.friend_id = nil
     assert_not @friendship.valid?
   end
 

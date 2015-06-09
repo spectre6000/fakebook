@@ -2,7 +2,13 @@
 
 <h1>User index</h1>
 
-<% @users.each do |x| %>
-  <%= x.email %><br />
-  <%= link_to "Add friend", ... %>
+<% @users.each do |user| %>
+<% unless current_user == user %>
+    <%= user.email %><br />
+    <% unless current_user.friends.include? user   %>
+      <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %>
+    <% else %>
+      <%= link_to "Remove friend", friendship_path(:id => user.id), :method => :delete %>
+    <% end %>
+  <% end %>
 <% end %>
