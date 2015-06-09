@@ -4,7 +4,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
 
   def setup
     @user = users(:test1)
-    # @user = users(id: '1', email: 'test1@example.com', encrypted_password: Devise::Encryptor.digest(User, "password"), created_at: Time.now - 6.minutes, updated_at: Time.now - 4.minutes)
   end
 
   test "non-logged in users only see login page" do
