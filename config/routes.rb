@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root to: "users#index"
 
   resources :users, except: [:create, :new]
+
+  resources :friendships, only: [:create, :destroy]
   
 end

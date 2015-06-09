@@ -1,18 +1,11 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  
-  devise :omniauthable, :omniauth_providers => [:facebook]
-
-  has_and_belongs_to_many :friends, 
-              class_name: "User", 
-              join_table: :friends, 
-              foreign_key: :friend_id, 
-              association_foreign_key: :friended_id
-
-
+  devise :database_authenticatable, 
+         :registerable,
+         :recoverable, 
+         :rememberable, 
+         :trackable, 
+         :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
