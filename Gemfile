@@ -4,6 +4,9 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'figaro'
 
+gem 'rmagick'
+gem 'carrierwave'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record

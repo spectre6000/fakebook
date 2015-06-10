@@ -11,15 +11,23 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
-  def friend(user)
-    current_user.friendships.take(friend_id: user.id).accepted == true
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
-  def inverse_friend(user)
-    current_user.inverse_friendships.take(user_id: user.id).accepted == true
-  end
+  private
+
+    def user_params
+      params.require(:user).permit(:email, :image)
+    end
 
 end

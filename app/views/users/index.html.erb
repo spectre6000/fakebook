@@ -4,6 +4,7 @@
 
 <% @users.each do |user| %>
 <% unless current_user == user %>
+    <%= image_tag user.image_url(:thumb) %>
     <%= link_to "#{user.email}", user_path(user.id) %><br />
     <% if (!current_user.friends.include?(user)) && (!current_user.inverse_friends.include?(user)) %>
       <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %>

@@ -2,4 +2,14 @@
 
 <h1>User Show</h1>
 
+<%= image_tag @user.image_url(:thumb) %>
+
+<% if @user == current_user %>
+<%= form_for @user, :html => { :multipart => true } do |f| %>
+  <%= f.file_field :image %>
+  <br />
+  <%= f.submit "Upload" %>
+<% end %>
+<% end %>
+
 <%= @user.email %>
