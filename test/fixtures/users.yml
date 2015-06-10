@@ -11,3 +11,17 @@ test2:
   encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
   created_at: <%= Time.now - 7.minutes %>
   updated_at: <%= Time.now - 3.minutes %>
+
+test3:
+  id: '3'
+  email: 'test3@example.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  created_at: <%= Time.now - 8.minutes %>
+  updated_at: <%= Time.now - 5.minutes %>
+
+test4:
+  id: '4'
+  email: 'test4@example.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, "password") %>
+  created_at: <%= Time.now - 9.minutes %>
+  updated_at: <%= Time.now - 1.minutes %>

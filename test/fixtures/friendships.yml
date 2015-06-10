@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 3
-  friend_id: 4
-  accepted: false
+# one:
+#   user_id: 1
+#   friend_id: 2
+#   accepted: false
 
-two:
-  user_id: 5
-  friend_id: 6
-  accepted: false
+# two:
+#   user_id: 5
+#   friend_id: 6
+#   accepted: false

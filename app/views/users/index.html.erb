@@ -10,7 +10,7 @@
     <% elsif begin current_user.friendships.find_by(friend_id: user.id).accepted == true rescue false end || begin current_user.inverse_friendships.find_by(user_id: user.id).accepted == true rescue false end %>
       <%= link_to "Remove friend", friendship_path(:id => user.id), :method => :delete %>
     <% else %>
-      pending
+      <p>pending</p>
     <% end %>
     <br />
   <% end %>
