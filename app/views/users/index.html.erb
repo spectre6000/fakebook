@@ -4,7 +4,7 @@
 
 <% @users.each do |user| %>
 <% unless current_user == user %>
-    <%= user.email %><br />
+    <%= link_to "#{user.email}", user_path(user.id) %><br />
     <% if (!current_user.friends.include?(user)) && (!current_user.inverse_friends.include?(user)) %>
       <%= link_to "Add friend", friendships_path(:friend_id => user), :method => :post %>
     <% elsif begin current_user.friendships.find_by(friend_id: user.id).accepted == true rescue false end || begin current_user.inverse_friendships.find_by(user_id: user.id).accepted == true rescue false end %>
