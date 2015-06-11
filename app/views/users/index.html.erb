@@ -3,7 +3,7 @@
 <h1>User index</h1>
 
 <% @users.each do |user| %>
-<% unless current_user == user %>
+  <% unless current_user == user %>
     <%= image_tag user.image_url(:thumb) %>
     <%= link_to "#{user.email}", user_path(user.id) %><br />
     <% if (!current_user.friends.include?(user)) && (!current_user.inverse_friends.include?(user)) %>
@@ -15,4 +15,11 @@
     <% end %>
     <br />
   <% end %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.title %><br />
+
+    <%= f.button :likes %>
+
 <% end %>

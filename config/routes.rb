@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   resources :users, except: [:create, :new]
 
   resources :friendships, only: [:create, :destroy, :index, :edit]
+
+  resources :posts, only: [:create, :destroy]
   
 end
